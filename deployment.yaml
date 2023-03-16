@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nodejs-app
+  labels:
+    app: nodejs
+    namespace: kubeproject
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: nodejs
+  template:
+    metadata:
+      labels:
+        app: nodejs
+        
+    spec:
+      containers:
+      - name: nodejsapp
+        image: sanjanathamke/todonode:latest
+        ports:
+        - containerPort: 8000

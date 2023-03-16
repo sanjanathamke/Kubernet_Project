@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-nodejs-app
+  namespace: kubeproject
+spec:
+  rules:
+  - host: "nodejs-todo-app.info"
+    http:
+      paths:
+        - pathType: Prefix
+          path: "/"
+          backend:
+            service:
+              name: my-service-load
+              port:
+                number: 80
